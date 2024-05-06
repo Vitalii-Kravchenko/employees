@@ -29,6 +29,15 @@ class App extends Component {
         })
     }
 
+    addEmployee = (employee) => {
+        this.setState(({data}) => {
+            return {
+                data: [...data, employee]
+            }
+
+        })
+    }
+
     render() {
         return (
             <div className="app">
@@ -42,7 +51,7 @@ class App extends Component {
                 <EmployeesList
                     data={this.state.data}
                     onDelete={this.deleteItem} />
-                <EmployeesAddForm />
+                <EmployeesAddForm onAddEmployee={this.addEmployee} />
             </div>
         );
     }

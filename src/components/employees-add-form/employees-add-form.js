@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid'
 
 import './employees-add-form.css';
 
@@ -17,6 +18,19 @@ class EmployeesAddForm extends Component {
     })
   }
 
+  onAddEmployee = (e) => {
+    e.preventDefault();
+
+    const { onAddEmployee } = this.props;
+    const { name, salary } = this.state;
+
+    const employee = { name: name, salary: salary, increase: false, id: uuidv4() };
+
+    if (name !== '' && salary !== '') {
+      return onAddEmployee(employee);
+    }
+  }
+
   render() {
     const { name, salary } = this.state;
 
@@ -24,7 +38,8 @@ class EmployeesAddForm extends Component {
       <div className="app-add-form">
         <h3>Добавьте нового сотрудника</h3>
         <form
-          className="add-form d-flex">
+          className="add-form d-flex"
+          onSubmit={(e) => this.onAddEmployee(e)}>
           <input type="text"
             className="form-control new-post-label"
             placeholder="Как его зовут?"
