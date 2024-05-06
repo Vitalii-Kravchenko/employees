@@ -24,7 +24,13 @@ class EmployeesAddForm extends Component {
     const { onAddEmployee } = this.props;
     const { name, salary } = this.state;
 
-    const employee = { name: name, salary: salary, increase: false, id: uuidv4() };
+    const employee = {
+      name: name,
+      salary: salary,
+      increase: false,
+      rise: false,
+      id: uuidv4()
+    };
 
     if (name !== '' && salary !== '') {
       return onAddEmployee(employee);
@@ -39,7 +45,7 @@ class EmployeesAddForm extends Component {
         <h3>Добавьте нового сотрудника</h3>
         <form
           className="add-form d-flex"
-          onSubmit={(e) => this.onAddEmployee(e)}>
+          onSubmit={this.onAddEmployee}>
           <input type="text"
             className="form-control new-post-label"
             placeholder="Как его зовут?"
