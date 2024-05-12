@@ -40,15 +40,17 @@ class App extends Component {
         })
     }
 
-    onToggleProp = (id, prop) => {
-        this.setState(({ data }) => ({
-            data: data.map(item => {
-                if (item.id === id) {
-                    return { ...item, [prop]: !item[prop] }
-                }
-                return item;
-            })
-        }));
+    onToggleProp = (e, id, prop) => {
+        if ((e.type === 'click') || (e.type === 'keydown' && (e.code === 'Space' || e.code === 'Enter'))) {
+            this.setState(({ data }) => ({
+                data: data.map(item => {
+                    if (item.id === id) {
+                        return { ...item, [prop]: !item[prop] }
+                    }
+                    return item;
+                })
+            }));
+        }
     }
 
     searchEmp = (items, term) => {
@@ -112,7 +114,7 @@ class App extends Component {
 
                 <div className="search-panel">
                     <SearchPanel onUpdateSearch={this.onUpdateSearch} />
-                    <AppFilter 
+                    <AppFilter
                         filter={filter}
                         onFilterSelect={this.onFilterSelect} />
                 </div>
