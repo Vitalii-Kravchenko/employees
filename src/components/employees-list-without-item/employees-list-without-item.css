@@ -1,0 +1,11 @@
+.employees-list-without-item {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.employees-list-without-item span {
+    font-size: 20px;
+    color: #212529;
+}

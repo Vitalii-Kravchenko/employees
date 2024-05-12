@@ -1,4 +1,5 @@
 import EmployeesListItem from "../employees-list-item/employees-list-item";
+import EmployeesListWithoutItem from "../employees-list-without-item/employees-list-without-item";
 
 import './employees-list.css';
 
@@ -18,7 +19,7 @@ const EmployeesList = ({ data, onDelete, onToggleProp, onChangeSalary }) => {
 
   return (
     <ul className="app-list list-group">
-      {elements}
+      {elements.length === 0 ? <EmployeesListWithoutItem /> : elements}
     </ul>
   )
 }
